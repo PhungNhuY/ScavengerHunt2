@@ -222,7 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 299632087}
   mapRenderer: {fileID: 2113389559}
-  url: 
+  minZoom: 2
+  maxZoom: 8
+  camPos: {x: 0, y: 0, z: -10}
 --- !u!1 &2113389558
 GameObject:
   m_ObjectHideFlags: 0

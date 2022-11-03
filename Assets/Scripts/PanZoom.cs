@@ -7,33 +7,37 @@ using System.IO;
 public class PanZoom : MonoBehaviour
 {
     Vector3 touchStart;
-    [SerializeField] private Camera cam;
-    [SerializeField] private SpriteRenderer mapRenderer;
+    [SerializeField] Camera cam;
+    [SerializeField] SpriteRenderer mapRenderer;
+    [SerializeField] float minZoom;
+    [SerializeField] float maxZoom;
+    [SerializeField] Vector3 camPos = new Vector3(0, 0, -10);
     private float minCamSize, maxCamSize;
     private float mapMinX, mapMaxX, mapMinY, mapMaxY;
-    public string url;
+    bool zooming;
 
     // Start is called before the first frame update
     void Start()
     {
+        // tính toán kích thước map
         mapMinX = mapRenderer.transform.position.x - mapRenderer.bounds.size.x / 2f;
         mapMaxX = mapRenderer.transform.position.x + mapRenderer.bounds.size.x / 2f;
 
         mapMinY = mapRenderer.transform.position.y - mapRenderer.bounds.size.y / 2f;
         mapMaxY = mapRenderer.transform.position.y + mapRenderer.bounds.size.y / 2f;
 
-        // set maxCamSize bằng chiều cao của ảnh
-        maxCamSize = mapRenderer.bounds.size.y / 2f;
-        // minCamSize bằng 1/4 maxCamSize => zoom max đc to gấp 4 lần ảnh
-        // minCamSize = maxCamSize / 4f;
-        minCamSize = maxCamSize / 10f;
+        // set maxCamSize and minCamSize
+        float mapSize = mapRenderer.bounds.size.y / 2f;
+        maxCamSize = mapSize / minZoom;
+        minCamSize = mapSize / maxZoom;
 
-        // init camSize
+        // set first camera size
         cam.orthographicSize = maxCamSize;
 
-        // cam pos in top left
-        Vector3 temp = new Vector3(-1000, 1000, -10);
-        cam.transform.position = ClampCamera(cam.transform.position + temp);
+        // first camera pos
+        cam.transform.position = ClampCamera(camPos);
+
+        zooming = false;
     }
 
     // Update is called once per frame
@@ -42,10 +46,12 @@ public class PanZoom : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             touchStart = cam.ScreenToWorldPoint(Input.mousePosition);
+            zooming = false;
         }
 
         if (Input.touchCount == 2)
         {
+            zooming = true;
             // chạm 2 ngón tay
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -60,12 +66,14 @@ public class PanZoom : MonoBehaviour
             zoom(difference * 0.01f);
         }
         // chỉ cham một ngón tay
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0) && !zooming)
         {
             Vector3 difference = touchStart - cam.ScreenToWorldPoint(Input.mousePosition);
             cam.transform.position = ClampCamera(cam.transform.position + difference);
         }
-        // zoom(Input.GetAxis("Mouse ScrollWheel"));
+
+        // this for PC, use scroll
+        zoom(Input.GetAxis("Mouse ScrollWheel")*5);
     }
 
     void zoom(float increment)
@@ -74,6 +82,7 @@ public class PanZoom : MonoBehaviour
         cam.transform.position = ClampCamera(cam.transform.position);
     }
 
+    // This function keeps the camera from going out of the map
     private Vector3 ClampCamera(Vector3 targetPosition)
     {
         float camHeight = cam.orthographicSize;
