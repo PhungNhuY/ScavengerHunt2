@@ -898,7 +898,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 737695768}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1851080218}
+        m_TargetAssemblyTypeName: BottombarController, Assembly-CSharp
+        m_MethodName: ChangeStatus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &737695768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,11 +1042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778937458471543685, guid: 981dd04be635f1b439ca0cc0f6dfd2cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 22.69
       objectReference: {fileID: 0}
     - target: {fileID: 778937458471543685, guid: 981dd04be635f1b439ca0cc0f6dfd2cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 38.69
+      value: 26.327
       objectReference: {fileID: 0}
     - target: {fileID: 778937458471543685, guid: 981dd04be635f1b439ca0cc0f6dfd2cc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1323,7 +1335,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 1979752765
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1441,6 +1453,7 @@ GameObject:
   - component: {fileID: 1851080215}
   - component: {fileID: 1851080217}
   - component: {fileID: 1851080216}
+  - component: {fileID: 1851080218}
   m_Layer: 5
   m_Name: CollectionBottomBar
   m_TagString: Untagged
@@ -1508,6 +1521,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851080214}
   m_CullTransparentMesh: 1
+--- !u!114 &1851080218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851080214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2624713658dc974499413e9e4ef93d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1854818594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1521,7 +1546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6212331184549718989, guid: 84e56488a38780948943bd8a0184aa01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.24
+      value: 31.154
       objectReference: {fileID: 0}
     - target: {fileID: 6212331184549718989, guid: 84e56488a38780948943bd8a0184aa01, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1563,7 +1588,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart_001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 84e56488a38780948943bd8a0184aa01, type: 3}
 --- !u!4 &1854818595 stripped
 Transform:

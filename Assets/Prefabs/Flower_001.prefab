@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6912819411347198128}
   - component: {fileID: 6912819411347198131}
+  - component: {fileID: 4429037206647248810}
+  - component: {fileID: 2055973721754089209}
   m_Layer: 0
   m_Name: Flower_001
   m_TagString: Untagged
@@ -84,3 +86,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4429037206647248810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6912819411347198129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac535c821440b1d4fb15d528fbbb57df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &2055973721754089209
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6912819411347198129}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.71}
+    newSize: {x: 0.5, y: 0.71}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.11, y: -0.024999999}
+      - {x: 0.21, y: 0.095}
+      - {x: 0.17999999, y: 0.205}
+      - {x: 0.13, y: 0.315}
+      - {x: 0.06, y: 0.355}
+      - {x: -0.08, y: 0.355}
+      - {x: -0.25, y: 0.225}
+      - {x: -0.25, y: 0.085}
+      - {x: -0.21, y: 0.015}
+      - {x: -0.25, y: -0.015}
+      - {x: -0.25, y: -0.114999995}
+      - {x: -0.21, y: -0.21499999}
+      - {x: 0.06, y: -0.355}
+      - {x: 0.12, y: -0.355}
+      - {x: 0.16, y: -0.345}
+      - {x: 0.25, y: -0.185}
+      - {x: 0.25, y: -0.085}
+      - {x: 0.24, y: -0.035}
