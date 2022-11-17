@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +19,10 @@ public class Body : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// dùng để chuyển tab ở màn Home
+    /// </summary>
+    /// <param name="pageName"></param>
     public void MoveTo(string pageName)
     {
         Debug.Log(pageName);
@@ -51,6 +55,13 @@ public class Body : MonoBehaviour
         ));
     }
 
+    /// <summary>
+    /// hiệu ứng chuyển màn
+    /// </summary>
+    /// <param name="pos1"> vị trí bắt đầu</param>
+    /// <param name="pos2"> vị trí kết thúc</param>
+    /// <param name="duration"> thời gian của hiệu ứng (giây)</param>
+    /// <returns></returns>
     IEnumerator SmoothMove(Vector3 pos1, Vector3 pos2, float duration)
     {
         for (float t = 0f; t < duration; t += Time.deltaTime)

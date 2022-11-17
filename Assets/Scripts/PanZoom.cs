@@ -99,69 +99,85 @@ public class PanZoom : MonoBehaviour
         return new Vector3(newX, newY, targetPosition.z);
     }
 
-    //public void moveTo(int pos)
-    //{
-    //    // cam.orthographicSize = maxCamSize / 4f;
-    //    StartCoroutine(smoothCamScale(
-    //        cam.orthographicSize, 
-    //        maxCamSize / 4f, 
-    //        1f
-    //    ));
-    //    if (pos == 1)
-    //    {
-    //        // cam.transform.position = new Vector3(mapMinX / 2f, mapMaxY / 2f, cam.transform.position.z);
-    //        StartCoroutine(smoothCamTrans(
-    //            cam.transform.position,
-    //            new Vector3(mapMinX / 2f, mapMaxY / 2f, cam.transform.position.z),
-    //            1f
-    //        ));
-    //    }
-    //    else if (pos == 2)
-    //    {
-    //        // cam.transform.position = new Vector3(mapMaxX / 2f, mapMaxY / 2f, cam.transform.position.z);
-    //        StartCoroutine(smoothCamTrans(
-    //            cam.transform.position,
-    //            new Vector3(mapMaxX / 2f, mapMaxY / 2f, cam.transform.position.z),
-    //            1f
-    //        ));
-    //    }
-    //    else if (pos == 3)
-    //    {
-    //        // cam.transform.position = new Vector3(mapMaxX / 2f, mapMinY / 2f, cam.transform.position.z);
-    //        StartCoroutine(smoothCamTrans(
-    //            cam.transform.position,
-    //            new Vector3(mapMaxX / 2f, mapMinY / 2f, cam.transform.position.z),
-    //            1f
-    //        ));
-    //    }
-    //    else if (pos == 4)
-    //    {
-    //        // cam.transform.position = new Vector3(mapMinX / 2f, mapMinY / 2f, cam.transform.position.z);
-    //        StartCoroutine(smoothCamTrans(
-    //            cam.transform.position,
-    //            new Vector3(mapMinX / 2f, mapMinY / 2f, cam.transform.position.z),
-    //            1f
-    //        ));
-    //    }
-    //}
+    /// <summary>
+    /// chuyển camera tới vị trí được chỉ định
+    /// </summary>
+    /// <param name="pos"> nhân giá trị 1, 2, 3, 4. tương ứng với 4 phần của map</param>
+    public void moveTo(int pos)
+    {
+        // cam.orthographicSize = maxCamSize / 4f;
+        StartCoroutine(smoothCamScale(
+            cam.orthographicSize,
+            maxCamSize / 4f,
+            1f
+        ));
+        if (pos == 1)
+        {
+            // cam.transform.position = new Vector3(mapMinX / 2f, mapMaxY / 2f, cam.transform.position.z);
+            StartCoroutine(smoothCamTrans(
+                cam.transform.position,
+                new Vector3(mapMinX / 2f, mapMaxY / 2f, cam.transform.position.z),
+                1f
+            ));
+        }
+        else if (pos == 2)
+        {
+            // cam.transform.position = new Vector3(mapMaxX / 2f, mapMaxY / 2f, cam.transform.position.z);
+            StartCoroutine(smoothCamTrans(
+                cam.transform.position,
+                new Vector3(mapMaxX / 2f, mapMaxY / 2f, cam.transform.position.z),
+                1f
+            ));
+        }
+        else if (pos == 3)
+        {
+            // cam.transform.position = new Vector3(mapMaxX / 2f, mapMinY / 2f, cam.transform.position.z);
+            StartCoroutine(smoothCamTrans(
+                cam.transform.position,
+                new Vector3(mapMaxX / 2f, mapMinY / 2f, cam.transform.position.z),
+                1f
+            ));
+        }
+        else if (pos == 4)
+        {
+            // cam.transform.position = new Vector3(mapMinX / 2f, mapMinY / 2f, cam.transform.position.z);
+            StartCoroutine(smoothCamTrans(
+                cam.transform.position,
+                new Vector3(mapMinX / 2f, mapMinY / 2f, cam.transform.position.z),
+                1f
+            ));
+        }
+    }
 
-    //IEnumerator smoothCamTrans(Vector3 pos1, Vector3 pos2, float duration)
-    //{
-    //    for (float t = 0f; t < duration; t += Time.deltaTime)
-    //    {
-    //        transform.position = Vector3.Lerp(pos1, pos2, t / duration);
-    //        yield return 0;
-    //    }
-    //    cam.transform.position = pos2;
-    //}
+    /// <summary>
+    /// hiệu ứng di chuyển camera
+    /// </summary>
+    /// <param name="pos1">vị trí bắt đầu</param>
+    /// <param name="pos2">vị trí đích</param>
+    /// <param name="duration">thời gian (giây)</param>
+    IEnumerator smoothCamTrans(Vector3 pos1, Vector3 pos2, float duration)
+    {
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            transform.position = Vector3.Lerp(pos1, pos2, t / duration);
+            yield return 0;
+        }
+        cam.transform.position = pos2;
+    }
 
-    //IEnumerator smoothCamScale(float size1, float size2, float duration)
-    //{
-    //    for (float t = 0f; t < duration; t += Time.deltaTime)
-    //    {
-    //        cam.orthographicSize = Mathf.Lerp(size1, size2, t / duration);
-    //        yield return 0;
-    //    }
-    //    cam.orthographicSize = size2;
-    //}
+    /// <summary>
+    /// hiệu ứng zoom camera
+    /// </summary>
+    /// <param name="size1">size ban đầu</param>
+    /// <param name="size2">size đích</param>
+    /// <param name="duration">thời gian (giây)</param>
+    IEnumerator smoothCamScale(float size1, float size2, float duration)
+    {
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            cam.orthographicSize = Mathf.Lerp(size1, size2, t / duration);
+            yield return 0;
+        }
+        cam.orthographicSize = size2;
+    }
 }

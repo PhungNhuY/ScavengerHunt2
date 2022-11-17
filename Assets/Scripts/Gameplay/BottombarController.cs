@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +19,9 @@ public class BottombarController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// ẩn hiện bottombar trong game
+    /// </summary>
     public void ChangeStatus()
     {
         if (status)

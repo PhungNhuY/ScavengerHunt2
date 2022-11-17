@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class ItemController : MonoBehaviour
 {
-    private void OnMouseUp()
-    {
-        gameObject.SetActive(false);
-    }
+    //private void OnMouseUp()
+    //{
+    //    gameObject.SetActive(false);
+    //}
 }
